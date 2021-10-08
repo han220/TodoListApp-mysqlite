@@ -6,6 +6,8 @@ import java.util.Date;
 
 public class TodoItem {
 	public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	private int id;
+	private int is_completed = 0;
 	private String title;
 	private String desc;
 	private String current_date;
@@ -27,6 +29,20 @@ public class TodoItem {
 		this.current_date = current_date;
 		this.category = category;
 		this.duedate = duedate;
+	}
+	
+	public TodoItem(int id, String category, String title, String desc, String duedate, String current_date, int is_completed) {
+		this.id = id;
+		this.title = title;
+		this.desc = desc;
+		this.current_date = current_date;
+		this.category = category;
+		this.duedate = duedate;
+		this.is_completed = is_completed;
+	}
+	
+	public int getId() {
+		return id;
 	}
 
 	public String getTitle() {
@@ -85,7 +101,19 @@ public class TodoItem {
 		return category + "##" + title + "##" + desc + "##" + duedate + "##" + current_date + "\n";
 	}
 	
+	/**
+	 * @deprecated Use print() instead as now item contains the index number.
+	 * @param i index to print out
+	 * @return
+	 */
+	@Deprecated
 	public String print(int i) {
 		return String.format("%d. [%s] %s - %s - %s - %s", i, category, title, desc, duedate, current_date);
+	}
+	
+	@Override
+	public String toString() {
+		String checked = is_completed == 1 ? "[V]" : "";
+		return String.format("%d. [%s] %s%s - %s - %s - %s", id, category, title, checked, desc, duedate, current_date);
 	}
 }

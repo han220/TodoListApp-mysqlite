@@ -17,6 +17,8 @@ public class Menu {
 		System.out.println("find [Keyword] - Find keyword in title or desc");
 		System.out.println("find_cat [Keyword] - Find category");
 		System.out.println("ls_cat - List Categories");
+		System.out.println("comp [id] - Complete id");
+		System.out.println("ls_comp - List completed items");
 		System.out.println("exit - exit");
 		
 	}
